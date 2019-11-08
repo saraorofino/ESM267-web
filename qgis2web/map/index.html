@@ -37,21 +37,6 @@
         <script src="data/MultiparameterSondeSurveyLocation_6.js"></script>
         <script src="data/areasofinterest_7.js"></script>
         <script>
-        var highlightLayer;
-        function highlightFeature(e) {
-            highlightLayer = e.target;
-
-            if (e.target.feature.geometry.type === 'LineString') {
-              highlightLayer.setStyle({
-                color: '#ffff00',
-              });
-            } else {
-              highlightLayer.setStyle({
-                fillColor: '#ffff00',
-                fillOpacity: 1
-              });
-            }
-        }
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
         }).fitBounds([[-14.199515081684362,-169.6785820616367],[-14.15137709920728,-169.60539776288755]]);
@@ -71,14 +56,6 @@
         layer_OpenStreetMap_0;
         map.addLayer(layer_OpenStreetMap_0);
         function pop_CoastalSprings_1(feature, layer) {
-            layer.on({
-                mouseout: function(e) {
-                    for (i in e.target._eventParents) {
-                        e.target._eventParents[i].resetStyle(e.target);
-                    }
-                },
-                mouseover: highlightFeature,
-            });
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['OBJECTID'] !== null ? Autolinker.link(String(feature.properties['OBJECTID'])) : '') + '</td>\
@@ -102,7 +79,7 @@
         function style_CoastalSprings_1_0() {
             return {
                 pane: 'pane_CoastalSprings_1',
-                radius: 5.999999999999998,
+                radius: 6.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -112,7 +89,7 @@
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(17,35,83,1.0)',
-                interactive: false,
+                interactive: true,
             }
         }
         map.createPane('pane_CoastalSprings_1');
@@ -120,7 +97,7 @@
         map.getPane('pane_CoastalSprings_1').style['mix-blend-mode'] = 'normal';
         var layer_CoastalSprings_1 = new L.geoJson(json_CoastalSprings_1, {
             attribution: '',
-            interactive: false,
+            interactive: true,
             dataVar: 'json_CoastalSprings_1',
             layerName: 'layer_CoastalSprings_1',
             pane: 'pane_CoastalSprings_1',
@@ -134,16 +111,7 @@
             },
         });
         bounds_group.addLayer(layer_CoastalSprings_1);
-        map.addLayer(layer_CoastalSprings_1);
         function pop_ValoniaSeverityScale_2(feature, layer) {
-            layer.on({
-                mouseout: function(e) {
-                    for (i in e.target._eventParents) {
-                        e.target._eventParents[i].resetStyle(e.target);
-                    }
-                },
-                mouseover: highlightFeature,
-            });
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['OBJECTID'] !== null ? Autolinker.link(String(feature.properties['OBJECTID'])) : '') + '</td>\
@@ -302,14 +270,6 @@
         bounds_group.addLayer(layer_ValoniaSeverityScale_2);
         map.addLayer(layer_ValoniaSeverityScale_2);
         function pop_NutrientAnalysisSamplingLocation_3(feature, layer) {
-            layer.on({
-                mouseout: function(e) {
-                    for (i in e.target._eventParents) {
-                        e.target._eventParents[i].resetStyle(e.target);
-                    }
-                },
-                mouseover: highlightFeature,
-            });
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['OBJECTID'] !== null ? Autolinker.link(String(feature.properties['OBJECTID'])) : '') + '</td>\
@@ -348,16 +308,17 @@
         function style_NutrientAnalysisSamplingLocation_3_0() {
             return {
                 pane: 'pane_NutrientAnalysisSamplingLocation_3',
-                radius: 6.8,
+                shape: 'x',
+                radius: 4.066659999999995,
                 opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
+                color: 'rgba(35,172,87,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 1,
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(7,156,94,1.0)',
+                fillColor: 'rgba(35,35,35,1.0)',
                 interactive: false,
             }
         }
@@ -380,16 +341,7 @@
             },
         });
         bounds_group.addLayer(layer_NutrientAnalysisSamplingLocation_3);
-        map.addLayer(layer_NutrientAnalysisSamplingLocation_3);
         function pop_TemperatureLoggerLocations_4(feature, layer) {
-            layer.on({
-                mouseout: function(e) {
-                    for (i in e.target._eventParents) {
-                        e.target._eventParents[i].resetStyle(e.target);
-                    }
-                },
-                mouseover: highlightFeature,
-            });
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['OBJECTID'] !== null ? Autolinker.link(String(feature.properties['OBJECTID'])) : '') + '</td>\
@@ -416,8 +368,7 @@
         function style_TemperatureLoggerLocations_4_0() {
             return {
                 pane: 'pane_TemperatureLoggerLocations_4',
-                shape: 'x',
-                radius: 5.1999999999999975,
+                radius: 3.9999999999999996,
                 opacity: 1,
                 color: 'rgba(52,13,160,1.0)',
                 dashArray: '',
@@ -426,7 +377,7 @@
                 weight: 1,
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(255,0,0,1.0)',
+                fillColor: 'rgba(52,13,160,1.0)',
                 interactive: false,
             }
         }
@@ -449,16 +400,7 @@
             },
         });
         bounds_group.addLayer(layer_TemperatureLoggerLocations_4);
-        map.addLayer(layer_TemperatureLoggerLocations_4);
         function pop_SeawaterSampleLocations_5(feature, layer) {
-            layer.on({
-                mouseout: function(e) {
-                    for (i in e.target._eventParents) {
-                        e.target._eventParents[i].resetStyle(e.target);
-                    }
-                },
-                mouseover: highlightFeature,
-            });
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['OBJECTID'] !== null ? Autolinker.link(String(feature.properties['OBJECTID'])) : '') + '</td>\
@@ -499,7 +441,7 @@
                 pane: 'pane_SeawaterSampleLocations_5',
                 radius: 4.0,
                 opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
+                color: 'rgba(53,129,246,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
@@ -507,7 +449,7 @@
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(28,140,238,1.0)',
-                interactive: true,
+                interactive: false,
             }
         }
         map.createPane('pane_SeawaterSampleLocations_5');
@@ -515,7 +457,7 @@
         map.getPane('pane_SeawaterSampleLocations_5').style['mix-blend-mode'] = 'normal';
         var layer_SeawaterSampleLocations_5 = new L.geoJson(json_SeawaterSampleLocations_5, {
             attribution: '',
-            interactive: true,
+            interactive: false,
             dataVar: 'json_SeawaterSampleLocations_5',
             layerName: 'layer_SeawaterSampleLocations_5',
             pane: 'pane_SeawaterSampleLocations_5',
@@ -529,16 +471,7 @@
             },
         });
         bounds_group.addLayer(layer_SeawaterSampleLocations_5);
-        map.addLayer(layer_SeawaterSampleLocations_5);
         function pop_MultiparameterSondeSurveyLocation_6(feature, layer) {
-            layer.on({
-                mouseout: function(e) {
-                    for (i in e.target._eventParents) {
-                        e.target._eventParents[i].resetStyle(e.target);
-                    }
-                },
-                mouseover: highlightFeature,
-            });
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['OBJECTID'] !== null ? Autolinker.link(String(feature.properties['OBJECTID'])) : '') + '</td>\
@@ -565,15 +498,15 @@
                 shape: 'square',
                 radius: 4.0,
                 opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
+                color: 'rgba(148,8,22,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 1,
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(73,19,18,1.0)',
-                interactive: true,
+                fillColor: 'rgba(148,8,22,1.0)',
+                interactive: false,
             }
         }
         map.createPane('pane_MultiparameterSondeSurveyLocation_6');
@@ -581,7 +514,7 @@
         map.getPane('pane_MultiparameterSondeSurveyLocation_6').style['mix-blend-mode'] = 'normal';
         var layer_MultiparameterSondeSurveyLocation_6 = new L.geoJson(json_MultiparameterSondeSurveyLocation_6, {
             attribution: '',
-            interactive: true,
+            interactive: false,
             dataVar: 'json_MultiparameterSondeSurveyLocation_6',
             layerName: 'layer_MultiparameterSondeSurveyLocation_6',
             pane: 'pane_MultiparameterSondeSurveyLocation_6',
@@ -595,16 +528,7 @@
             },
         });
         bounds_group.addLayer(layer_MultiparameterSondeSurveyLocation_6);
-        map.addLayer(layer_MultiparameterSondeSurveyLocation_6);
         function pop_areasofinterest_7(feature, layer) {
-            layer.on({
-                mouseout: function(e) {
-                    for (i in e.target._eventParents) {
-                        e.target._eventParents[i].resetStyle(e.target);
-                    }
-                },
-                mouseover: highlightFeature,
-            });
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['id'] !== null ? Autolinker.link(String(feature.properties['id'])) : '') + '</td>\
